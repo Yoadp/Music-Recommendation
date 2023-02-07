@@ -6,8 +6,8 @@ from sklearn.preprocessing import MinMaxScaler
 import base64
 
 TOKEN = ""
-CLIENT_ID = '1494687ba5df49f4bf8d0815f018f4e1'
-CLIENT_SECRET = '39468bdecca148ba89f2d5659c863b5a'
+CLIENT_ID = 'CLIENT ID'
+CLIENT_SECRET = 'CLIENT SECRET'
 
 MODEL = ['tempo', 'danceability', 'loudness', 'acousticness', 'energy','time_signature']
 
