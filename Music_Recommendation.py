@@ -13,6 +13,7 @@ MODEL = ['tempo', 'danceability', 'loudness', 'acousticness', 'energy','time_sig
 
 REQUEST_HEADERS = {}
 
+#Authorize to spotify
 def make_authorization():
     message = f"{CLIENT_ID}:{CLIENT_SECRET}"
     message_bytes = message.encode('ascii')
@@ -28,6 +29,7 @@ def make_authorization():
     global REQUEST_HEADERS
     REQUEST_HEADERS = {'Content-Type' : 'applications/json', 'Authorization' : 'Bearer ' + TOKEN}
 
+#Handle the song and find similar song to it
 def algo(song, dataset):
     #Remove by year
     song_year = int(song['release_date'].split("-")[0])
@@ -50,7 +52,7 @@ def algo(song, dataset):
     dataset_features = dataset[MODEL]
     song_features = song[MODEL]
     print(len(dataset_features))
-    #Normalize
+    #Normalize - may replace it  with self-built function that takes the min value - max value and scale the rest of the values with X - Xmin / Xmax - Xmin
     scaler = MinMaxScaler()
     dataset_features = pd.DataFrame(scaler.fit_transform(dataset_features))
     song_features = scaler.transform([song_features])
